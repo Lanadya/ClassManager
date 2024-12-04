@@ -1,0 +1,25 @@
+name: Build and Analyze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
+
+      - name: Build and Analyze
+        run: |
+          xcodebuild clean build analyze \
+            -scheme "ClassManager" \
+            -project "ClassManager.xcodeproj" \
+            CODE_SIGNING_ALLOWED=NO
+

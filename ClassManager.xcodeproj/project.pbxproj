@@ -1,3 +1,5 @@
+ // Dies ist ein Testkommentar
+
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
